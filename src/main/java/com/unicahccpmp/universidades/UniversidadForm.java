@@ -41,7 +41,7 @@ public class UniversidadForm extends javax.swing.JDialog {
             System.out.println(id);
             currentUniversidad = UniversidadModel.getUniversidadesById(id);
             jTSiglas.setText(currentUniversidad.getSIGLAS());
-            jTSiglas.setText(currentUniversidad.getRECTOR());
+            jTRector.setText(currentUniversidad.getRECTOR());
         }else {
             currentUniversidad = new Universidad();
         }

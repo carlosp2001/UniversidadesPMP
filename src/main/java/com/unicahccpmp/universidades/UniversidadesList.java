@@ -103,7 +103,7 @@ public class UniversidadesList extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new UniversidadesTableModel());
+        jTable1.setModel(universidades);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

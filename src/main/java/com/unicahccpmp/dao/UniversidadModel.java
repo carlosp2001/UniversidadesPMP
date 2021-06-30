@@ -24,7 +24,7 @@ public class UniversidadModel {
              String SQLCrearTabla = "CREATE TABLE IF NOT EXISTS universidades"
                         + " (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                         + " SIGLAS TEXT NOT NULL,"
-                        + " RECTORES TEXT NOT NULL"
+                        + " RECTOR TEXT NOT NULL"
                         + ")";
                 Statement comandoSql = conn.createStatement();
                 comandoSql.executeUpdate(SQLCrearTabla);
@@ -38,22 +38,13 @@ public class UniversidadModel {
     public static ArrayList<Universidad> getUniversidades(){
         ArrayList<Universidad> universidades = new ArrayList<Universidad>();
         
-        // Todo obtener de la base de datos
-        /* Alumno _miAlumno = new Alumno();
-        _miAlumno.setID(1);
-        _miAlumno.setNOMBRES("Orlando");
-        _miAlumno.setAPELLIDOS("Betancourth");
-        _miAlumno.setIDENTIDAD("0801198412349");
-        _miAlumno.setCORREO("obetancourthunicah@gmail.com");
-        alumnos.add(_miAlumno);
-        */
+        
         try {
             Connection conn = Conn.obtenerConexion();
-
             String SQLGetUniversidades = "Select * FROM universidades;";
             Statement comandoSql = conn.createStatement();
             ResultSet cursorUniversidades = comandoSql.executeQuery(SQLGetUniversidades);
-            while( cursorUniversidades.next() ){
+            while(cursorUniversidades.next() ){
                 Universidad _miUniversidad = new Universidad();
                 _miUniversidad.setID(cursorUniversidades.getInt("ID"));
                 _miUniversidad.setSIGLAS(cursorUniversidades.getString("SIGLAS"));
@@ -73,15 +64,7 @@ public class UniversidadModel {
     public static Universidad getUniversidadesById(double Id){
         Universidad _miUniversidad = new Universidad();
         
-        // Todo obtener de la base de datos
-        /* Alumno _miAlumno = new Alumno();
-        _miAlumno.setID(1);
-        _miAlumno.setNOMBRES("Orlando");
-        _miAlumno.setAPELLIDOS("Betancourth");
-        _miAlumno.setIDENTIDAD("0801198412349");
-        _miAlumno.setCORREO("obetancourthunicah@gmail.com");
-        alumnos.add(_miAlumno);
-        */
+        
         try {
             Connection conn = Conn.obtenerConexion();
 
@@ -134,7 +117,8 @@ public class UniversidadModel {
             int registroAfectados = comandoSQL.executeUpdate(
                     String.format(sqlStr,
                        universidadAEditar.getSIGLAS(), 
-                       universidadAEditar.getRECTOR()
+                       universidadAEditar.getRECTOR(),
+                       universidadAEditar.getID()
                     )
                        
             );
